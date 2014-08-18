@@ -103,7 +103,7 @@ class HomeController < ApplicationController
   end
   
   
-  #leaves a comment to the site manager.
+  #leaves a comment to the dream (same function is integrated on the dream page).
   def comment
     @user = User.find_by_id(session[:remember_token]) 
     @dream =  Dream.find_by_id(params[:id])
