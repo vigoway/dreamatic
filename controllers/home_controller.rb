@@ -30,7 +30,7 @@ class HomeController < ApplicationController
     @user = User.find_by_id(session[:remember_token]) 
     @dreams = @user.dreams.all   
     @dreamlist = Dream.all 
-    @dreamlist.sort!{|a,b|b.id <=> a.id}
+    @dreamlist.sort!{|a,b|b.id <=> a.id}  #sort dreams by date created (newest first)
     @likeList = Like.all
     @userList = User.all
     if @user.pics.size != 0
