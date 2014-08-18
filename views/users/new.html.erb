@@ -1,0 +1,46 @@
+ <script type="text/javascript">
+ var RecaptchaOptions = {
+    theme : 'white'
+ };
+ </script>
+ 
+<div id="centerOpaque">
+ 
+<h1 id="jointitle">It's a New Journey!</h1> <br/>  
+<div id="joincontainer">
+<% flash.each do |key, msg| %>
+    <%= content_tag :div, msg, :id => "warning" %>
+    <%= content_tag :script, :type => "text/javascript" do -%>
+        setTimeout("new Effect.Fade('notice_<%= key %>');", 15000);
+    <% end %>
+<% end %>
+<div id="joinform"> 
+<%= form_for @user, :action => :create do |f| %>
+<%= f.label :name %> <br />
+<%= f.text_field :name %> <br /><br />
+<%= f.label :email %> <br />
+<%= f.text_field :email %> <br /><span id="subtle"> *to log in, recover password, receive important notifications. <br/>  We will keep it secret. </span> <br/> <br /> 
+<%= f.label :password %> <br />
+<%= f.password_field :password %> <br /><br />
+<%= f.label :password_confirmation %> <br />
+<%= f.password_field :password_confirmation %> <br /><br />
+
+<div id="captcha">
+  <%= render '/share/recaptcha' %>
+</div>
+<br /><br />
+<%= f.check_box :check %> I have read the Website's <%= link_to 'policies', :controller=>'home',:action=>'policies'%>. <br /><br />
+<%= f.submit "Join the Dreamun!ty" %> <br />
+<% end %> <br/>
+    ....................................................<br/>
+<span id="subtle"> This is a quick signup, you can always edit your profile later. </span>
+</div>
+</div>  
+
+<div id="joinclear"> </div>
+</div>
+  
+
+   </div>
+
+

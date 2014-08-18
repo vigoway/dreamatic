@@ -1,0 +1,25 @@
+<%if User.find_by_id(session[:remember_token]) != nil %>
+<div id="changePass">
+<%= form_for @dream, :action =>'create' do |f| %>
+<%= f.label :Dream %> <br />
+<%= f.text_area :content, :size => "55x10"%> <br />
+<span id="subtle"><%= link_to "Need help posting a dream? ", :controller=>'home', :action=>'standards'%></span> <br/><br/>
+<%= f.label :privacy %>
+<%= f.select(:privacy, options_for_select([["public", false], ["private", true]])) %><br /><br/>
+<%= f.label :category %> 
+<%= f.select(:category, options_for_select([["Education",'Education'], ["Non-profit", 'Non-profit'], ["Enviromental", 'Enviromental'], ["Other", 'Other']]))%> <br /><br /><br />
+<%= f.label :resources %> <span id="subtle"> Money ($amount), skills, or other resources.</span><br/><br/> 
+<%= f.text_field :resources %><br/><br/> 
+<%= f.label :In_how_many_days_do_you_plan_to_realize_this_dream_? %> <br/>
+<%= f.text_field :state %> <br/>
+<br />
+<br/>
+<span id="subtle"> Content violating the website's <span id="policies"> <%= link_to "policies", :controller=>'home', :action=>'policies'%> </span> will be removed. </span><br/>
+<br />
+<br /> <%= f.submit "Post" %> <br />
+<% end %>
+</div>
+<br/><br/><br/>
+<%else%>
+<p id="warning"> You need to <%= link_to "log in", :controller => 'sessions', :action => 'new' %> first to view dreams. </p>
+<%end%>

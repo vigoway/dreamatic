@@ -1,0 +1,60 @@
+
+
+<div id="minilogincontainer" >
+<table id="functions">
+<tr id="functions">
+<%= form_for(:session,:url => sessions_path) do |f| %>
+<td><%= f.label :email %>:<%= f.text_field :email, :size => "14x1" %> </td>
+ <td><%= f.label :password %>:<%= f.password_field :password,:size => "10x1" %> </td>
+<td id="miniloginbtn"> <div> <%= f.submit "Login" %> </div> </td>
+<% end %>
+ </tr>
+  </table>
+</div>
+
+<img id="free" src="../images/free.png">
+
+
+<p id="welcome">  Welcome to Dreamatic!  </p> 
+<h3 id="motto"> <%= link_to "--a place to share your dreams and witness both your and others' dreams come true", :controller=>'home', :action => 'brand' %> <span id="mottolink"><%= link_to " [?]", :controller=>'home', :action => 'brand' %></span>.</h3> 
+
+
+<div id="divider"></div>
+
+<div id="container">
+
+<div id="signupcontainer">
+  <img id="signup" src="../images/quicksignup.png"/>
+<br />
+<div id="centeredsignup">
+  <br/> <br/>
+<%= form_for @user, :action => :signup  do |f| %>
+<%= f.label :name %> <br />
+<%= f.text_field :name %> <br /><br />
+<%= f.label :email %> <br />
+<%= f.text_field :email %> <br /><br />
+<%= f.label :password %> <br />
+<%= f.password_field :password %> <br /><br />
+<%= f.label :password_confirmation %> <br />
+<%= f.password_field :password_confirmation %> <br /><br />
+<%= f.label :code %> <br />
+<%= f.password_field :photo %> <br /><br />
+<%= f.check_box :check %> I have read the Website's <%= link_to 'policies', :controller=>'home',:action=>'policies'%>. <br /><br />
+<%= f.submit "Join the Dreamun!ty ®" %> <br />
+<% end %>
+</div>
+</div>
+<div id="homepiccontainer">
+
+<div id="slideshow">
+<ul id="slides">
+  <li><%= image_tag("/images/top_gallery/5.gif", :alt => "top image1", :width => "600px", :height => "366px") %></li>
+  <li><%= image_tag("/images/top_gallery/join.png", :alt => "top image2", :width => "600px") %></li>
+  <li><%= image_tag("/images/top_gallery/logobetheone.png", :alt => "top image3", :width => "600px") %></li>
+</ul>
+</div>
+
+</div>
+<div id="homeclear"></div>
+</div>
+

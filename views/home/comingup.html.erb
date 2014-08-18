@@ -1,0 +1,33 @@
+<h2 id="title"> What's going on? </h2>
+<div id="divider"> </div>
+
+<div id="brand">
+<p id="intro"> Hi <%=@user.name%>, what's up? Hope you are having a great summer and thank you for your attention! <br/>
+Following functions are being implemented and will be available to beta users soon! <br/> 
+ <br/>  
+* <strong> Friend system (name undecided) </strong> any suggestions are welcome.  <br/> 
+* <strong>Points system:</strong> members who post quality dreams or provide help to other users will be awarded points. 
+ <br/>
+* <strong> Facebook connect</strong> being considered  <br/>  
+
+Thank you all for your help and support! <br/> <br/>
+Thanks!:)<br/>
+ 
+<span id="motto">
+-- dreamatically yours, <br/>
+Vigo</span>
+</div>
+<div id="divider"></div>
+<p id="title"> active members </p>
+<% @userList.each do |user| %>
+ <span class="dropt" title="<%=user.name%>"> 
+ <a href="http://dreamatic.org/users/<%=user.id%>"> <img id="cache2" src="<%=user.pics[0].url%>" /> </a>
+ <span style="width:100px;"> <%=user.name%> </span>
+</span>
+<%end%>
+<div id="divider"></div>
+<br/><br/>
+
+</p>
+
+<div id ="logobrand"> <img src="../images/logonevertoolate.png" alt="Be the One!"/> </div>

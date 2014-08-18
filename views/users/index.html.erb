@@ -1,0 +1,63 @@
+<%if @user.email == "admin@dreamatic.org"%>
+<h1>Listing Users for Admin</h1>
+<p id="admin"> <br/>
+Hello, Admin! You can: <br/>
+Review and administrate the site here. Review users activities and kick out members that spread illegal information.<br/>
+Delete inappropriate posts. [THESE ACTIONS CAN NOT BE UNDONE!] </p>
+
+<%= link_to 'reset requests', :controller => 'requests', :action => 'clear'%>
+<div id="divider"> </div>
+<br/>
+<table>
+  <tr>
+    <th>User ID</th>
+    <th>Name</th>
+    <th>Email</th>
+    <th>#Dream_posts</th>
+    <th></th>  
+    <th></th>
+    <th>#comments </th>
+  </tr>
+
+<% @users.each do |user| %>
+  <tr id="users">
+    <td><%= user.id %></td>
+    <td><%= user.name %></td>
+    <td><%= user.email %></td>
+    <td>
+  <% if (user.email != "admin1@dreamatic.org") %>
+  <% @dreams = user.dreams.all %>
+  <% @dreams.each do |dream| %>
+  <span id="dreamList"> <%= dream.content %>  
+  <%= button_to 'Delete' , dream, :controller =>:dreams, :method => :delete %> </span> 
+     <%end%>
+        <% else %>
+  <span> Administrator </span>
+  <%end%>
+  </td>
+    <td><%= link_to 'Show', user %></td>
+     
+     <td><% if (user.email == "admin@dreamatic.org") %> 
+   <strong id="admin">Status: Administrator, can't be removed!</strong>
+   <% else %>
+   <%= button_to 'Delete User', user, :confirm => 'Are you sure?', :method => :delete %> 
+  <%end%>  
+  </td>
+  <td>
+  <% user.comments.each do |comment| %>
+  <span id="dreamList"> <%= comment.content %>  
+  <%= button_to 'Delete' , :controller =>:comments, :action=> :delete, :id=>comment.id %> </span> 
+     <%end%>  
+   </td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<li id="login">Admin Mode</li>
+
+<%else%>
+You have no right to view this page. :(
+<%end%>
+

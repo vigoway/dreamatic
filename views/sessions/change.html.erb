@@ -1,0 +1,25 @@
+
+
+<div id="joinform"> 
+<%= form_for :password, :action => :change_password do |f| %>
+<%= f.label :old_password %> <br />
+<%= f.password_field :password %> <br /><br />
+<%= f.label :new_password %> <br />
+<%= f.password_field :new_password %> <br /><br />
+<%= f.label :new_password_confirmation %> <br />
+<%= f.password_field :new_password_confirmation %> <br /><br />
+<%= f.submit "Change Password" %> <br />
+<% end %>
+</div>
+
+<div id="joinclear"> </div>
+</div>
+
+<div id="error">
+<% flash.each do |key, msg| %>
+    <%= content_tag :div, msg, :id => "notice_ #{key}" %>
+    <%= content_tag :script, :type => "text/javascript" do %>
+        setTimeout("new Effect.Fade('notice_<%= key %>');", 15000);
+    <% end %>
+<% end %>
+</div>

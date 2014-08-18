@@ -1,0 +1,15 @@
+<h1>Please enter your name, email and password</h1>
+
+<%= form_for @user, :action => :create do |f| %>
+
+<%= f.label :name %> <br />
+<%= f.text_field :name %> <br />
+<%= f.label :email %> <br />
+<%= f.text_field :email %> <br />
+<%= f.label :password %> <br />
+<%= f.text_field :password %> <br />
+<%= f.label :password_confirmation %> <br />
+<%= f.text_field :password_confirmation %> <br />
+
+<%= f.submit "Submit" %> <br />
+<% end %>

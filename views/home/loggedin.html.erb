@@ -1,0 +1,70 @@
+
+<div id="wrap">
+<li id="login"><%= link_to'Sign out', :controller =>:sessions, :action =>:destroy%></li>
+<h1> User Center </h1>
+<div id="divider"></div>
+
+<div id="user">
+<div id="userposts">
+<div id="dreamThread2">
+<span id="title">   what's  new </span>       <span id="subtle"><%= link_to "View more dreams on the DreamList", :action => :dreamList %> </span>
+<br/>
+<% i = 0 %>
+<% @dreamlist.sort!{|a,b|b.id <=> a.id} %>
+<% while i < 5 do%>
+<% dream = @dreamlist[i] %>
+<p id="posts"> <%= dream.content %>  </p>
+<span style="color:sienna"> Posted by <% s = dream.user.name%> <%= link_to s, :controller => :users, :action =>:show, :id => dream.user.id %>.  | Liked: <span id="num"> <%= dream.rank %></span> <%if dream.rank <=1 %> time <%else%> times <%end%> |  <%= link_to 'view the thread', :controller=> :dreams, :action => :show, :id=>dream.id %> </span>
+<hr/>
+ <% i += 1 %>
+<% end %>
+ <br/>
+
+  </div>
+</div>
+ 
+
+
+<div id="userinfo">
+ <table id="functions">
+ <tr>
+ <td>
+<% if @user.pics.size == 0 %>
+<div id="userphoto">
+User's Profile Picture <br/>
+<%= form_for :pic, :url=>{:controller=>:home, :action => :addpic} do |f| %>
+<%= f.label :enter_pic_url %> <br />
+<%= f.text_field :url%> <br />
+<%= f.submit "Add Picture" %>
+</div><%end%>
+<%else%>
+<img src =<%= @user.pics[0].url %> width = "100%"/> <br/>
+<%end%>
+ </td>
+ <td>
+Name: <strong> <%= @user.name %> </strong> <br/> <br/>
+Email: <%= @user.email%> <br/> <br/>
+User ID: <%=@user.id%> <br/> <br/>
+Joined:<br/> <%=@user.created_at.strftime("%B %d, %Y")%> <br/>
+<span id="subtle"> <%= link_to "Change Password!", 'http://www.dreamatic.org/change_password' %> </span>
+ </td>
+ </tr>
+ </table>
+<%= form_for :pic, :url=>{:controller=>:home, :action => :addpic} do |f| %>
+<%= f.label :image_url %>
+<%= f.text_field :url, :size => "10x1"%>
+<%= f.submit "Change" %> <br/> <br/>
+<%end%>
+</div>
+<br/>
+ 
+<table id="functions">
+<tr id= "functions">
+<td id="functions"> <li id="button"> <%= link_to "Post a New Dream!", :controller=>'dreams', :action=>'create'%> </li> </td> 
+<td id="functions"> <li id="button"> <%= link_to "Browse Dreams!", :action=>'dreamList' %> </li> </td>
+</tr>
+</table>
+</div>
+</div>
+
+

@@ -1,0 +1,54 @@
+<%if User.find_by_id(session[:remember_token]) != nil %>
+<span id="title"> < trending threads ></span>
+<div id="divider"></div>
+
+ <div id="dreamThread">
+<%@dreamlist.sort!{|a,b|b.rank <=> a.rank}%>
+<% @dreamlist.each do |dream| %>
+ <div>
+<% if (dream.privacy == false)%>
+ <span id="dreamcontent"> <%= dream.content %> </span> <br/> <br/>
+ <span id="dreamcontent2"> --<%= dream.category %> -- by <% s = dream.user.name%> 
+ <%= link_to s, :controller => :users, :action =>:show, :id => dream.user.id %> 
+ <img id="cache2" src = <%=dream.user.pics.first.url %> />
+ -- <%= dream.created_at.in_time_zone('Eastern Time (US & Canada)').strftime("%I:%M %p on %B %d, %Y") %> -- 
+  Liked: <span id="num"> <%= dream.rank %></span> times </span>   
+  <span id="subtle"> <% if (@user.email != dream.user.email) %>
+    <% if @user.likes.find_by_dream_id(dream.id).nil? %>
+    <%= link_to "[like]", :controller=> :home, :action => :like, :id=>dream.id %>
+    <% elsif @likeList.include? (@user.likes.find_by_dream_id(dream.id)) == false %>
+    <%= link_to "[like]", :controller=> :home, :action => :like, :id=>dream.id %>
+    <%else%>
+    <%= link_to "[unlike]", :controller=> :home, :action => :unlike, :id=>dream.id %>
+    <%end%>
+  </span> 
+  <% else %>
+  **Your post** </span>
+  <%end%>
+
+ |  <span id="subtle"> <%= link_to "[comment]", :controller=>:dreams, :action=>:show, :id=> dream.id %> </span> 
+ | <span id="subtle"><%= link_to '[go2thread]', :controller => :dreams, :action => :show, :id=> dream.id %> </span>
+  
+  <%dream.comments.each do |comment| %>
+
+  <div id="divider"> </div> <br/>  
+     <img id="cache" src = <%=comment.user.pics.first.url %> /> 
+     <div id="thread"> 
+     <span id="subtle">  <%= comment.user.name %> </span>
+     <span id="commentcontent"> <%= comment.content %> </span> <br/> 
+     <span id="subtle"> <%= comment.created_at.in_time_zone('Eastern Time (US & Canada)').strftime("%I:%M %p on %B %d, %Y") %> </span> 
+     </div>
+  <%end%> 
+  <br/><br/><hr/><br/>
+  </div>
+  <%end%>
+    <%end%>
+</div>
+ <%else%>
+ <p id="warning"> You need to <%= link_to "log in", :controller => 'sessions', :action => 'new' %> first to view dreams. </p>
+ <%end%>
+
+
+
+
+

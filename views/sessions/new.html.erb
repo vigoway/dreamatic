@@ -1,0 +1,24 @@
+<h1 id="jointitle"> Welcome! You look awesome today!</h1> <br/>
+<div id="loginbox">
+<%= form_for(:session,:url => sessions_path) do |f| %>
+
+<%= f.label :email %>:<br/>
+<%= f.text_field :email %> <br />
+<%= f.label :password %> </span>
+:<br/>
+<%= f.password_field :password %> 
+<br/>
+<span id="subtle"><%= link_to "Forgot password?", :controller => :password_resets, :action => :new %>
+<br/><br/>
+<%= f.submit "Login" %>
+
+<% end %>
+<br/>
+<br/>
+</div>
+<br/>
+
+<div id="suggest"> Do not have a <strong>Dreamatic</strong> account yet? <%= link_to'Sign up',:controller=> 'users', :action => 'new'%> today to join our dreamunity! <br/> Members can post their dreams and quality dreams will have the chance to win a big dream budget to help realize their wonderful dreams! :) <br/><br/> <strong> Join us, get inspired, get connected, get dreamatic'd! </strong> </div> 
+<br/>
+<br/>
+

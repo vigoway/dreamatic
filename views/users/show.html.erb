@@ -1,0 +1,202 @@
+
+<div id="centerOpaque">  
+
+<% if (@user == User.find_by_id(session[:remember_token])) %>  
+
+<li id="login"> <%= link_to 'Sign out', :controller =>:sessions, :action =>:destroy%></li>
+<br/> <br/>
+
+<div id="userinfo"> <%#contains three parts: profile, posts and friends%>
+
+
+ <div id="userProfile">
+ <img src=<%= @user.pics[0].url%> id="userPic"> 
+ 
+ <div id="userSummary"> 
+  <span id="subtle"> <strong> <%= @user.name %> </strong> | <%= @user.email%> | User ID: <%=@user.id%></span><br/>
+  <span id="joinTime"> A member since: <%=@user.created_at.strftime("%B %d, %Y")%> </span> <br/>
+  <span id="userChgPass"> <%= link_to "Change Password!", 'http://www.dreamatic.org/change_password' %> </span> |
+  <span id="userChgPass"> <%= link_to "Edit Profile" %> </span>
+ </div>
+
+ <div id="userStatsContainer"> 
+  <ul id="userStats"> 
+  <li> 
+  <% if !@requestlist.nil? %>
+  <div id="notification"> 
+  <%= link_to @requestlist.size.to_s, :controller => :requests, :action => :respond, :id => @user.id %> 
+  </div> 
+  <%end%> 
+  </li>
+  
+  <li>
+  <br/>  <%= @user.dreams.size %> <span id="subtle"> Dreams </span> <span id="userChgPass"><%= link_to '+new', :action => 'index', :controller => 'dreams' %> </span>
+  </li>
+  
+  <li>
+  <br/><%= @user.friends.size %> <span id="subtle"> <%= link_to 'Friends' %> </span> 
+  </li>   
+ </ul>
+ </div>
+<br/>
+<div id="picForm">
+<%= form_for :pic, :url=>{:controller=>:home, :action => :addpic} do |f| %>
+<%= f.label :image_url %>
+<%= f.text_field :url, :size => "10x1"%>
+<%= f.submit "Change" %>
+<% end %>
+<br/>
+ </div> 
+</div>
+ 
+ <div id="recentPosts">
+ <span id="title"> Your recent posts:</span> 
+   <div id= "divider"> </div> <br/>
+ <%if @user.dreams.size != 0%>
+ <%@user.dreams.sort!{|a,b| b.created_at <=> a.created_at}%>
+ <% @user.dreams.each do |dream| %>
+ <span id="posts"> <%= dream.content %> </span> <br/>
+ <span id="subtle"> @ <%= dream.created_at.in_time_zone('Eastern Time (US & Canada)').strftime("%I:%M %p on %B %d, %Y")  %></span>  <br/> <br/>
+ <span id="inline"> <%= button_to 'Delete' , dream, :controller =>:dreams, :method => :delete, :confirm => 'Are you sure?' %></span>
+ <span id="inline"> <div id="viewbtn"> <%= link_to 'View', :controller =>:dreams, :action => :show, :id=> dream.id %> </div> </span>
+ <div id= "divider"> </div> <br/>
+ <% end %>
+ <%else%>
+ You don't have any dreams posted yet, <span id="userChgPass"><%= link_to 'post one now', :action => 'index', :controller => 'dreams' %>. </span>
+  <%end%> 
+ </div> 
+
+ 
+ 
+ 
+ <div id="friends">
+ <span id="titleNew">  friends </span> <span id="num">(<%= @user.friends.size %>)</span> <br/>
+ <span id="subtle"> those who inspire and support you. </span>
+ <div id="divider"> </div>
+ <%if @user.friends.all.size != 0%>
+ <% @user.friends.all.each do |f|%>
+ <% @u = User.find(f.friend_id)%>
+ <div id="fmatrix">
+ <img src=<%= @u.pics[0].url%> id="fPic"/> <br/>
+ <span id="subtle"><%= link_to @u.name, :controller => :users, :action => :show, :id =>@u.id %></span> <br/>
+ </div>
+ <%end%>
+ <%else%>
+ <br/> You don't have a friend yet. Friend dreamers and show them your <span id="title"> passion and love! </span>
+ <%end%>
+ </div>
+ 
+ 
+</div> <%#end of userinfo div%>
+
+<div id="userposts">
+
+<div id="dreamThread2">
+<span id="title">   what's  new </span>  
+<span id="subtle"> <%= link_to "view MORE + trending threads", 'http://www.dreamatic.org/trending' %> </span>
+<br/>
+
+<%# listing 5 most recent dreams%>
+
+<% i = 0 %>
+<% @dreamlist.sort!{|a,b|b.id <=> a.id} %>
+<% while i < 8 do%>
+
+<% dream = @dreamlist[i] %>
+ <div id="divider"></div> <br/>
+<p id="posts"> <%= dream.content %>  </p>
+<span style="color:sienna"> Posted by <% s = dream.user.name%> <%= link_to s, :controller => :users, :action =>:show, :id => dream.user.id %>.  | Liked: <span id="num"> <%= dream.rank %></span> <%if dream.rank <=1 %> time <%else%> times <%end%> |  <%= link_to 'view the thread', :controller=> :dreams, :action => :show, :id=>dream.id %> </span>
+
+ <br/>
+ <% i += 1 %>
+<% end %>
+</div>
+</div>
+<div id="makeup"> </div>
+ 
+ 
+<%else%> <%# if this is not the current user's page, browsing mode%>
+
+
+<div id="userinfo2">
+<br/>
+     <img src =<%= @user.pics[0].url %> id="userPic2"/> <br/>
+ <div id="userSummary2">
+        <strong> <%= @user.name %> </strong> 
+        
+<% if @user.friends.find_by_friend_id(session[:remember_token]) == nil && @currentUser.requests.find_by_target_id(@user.id) == nil%>
+<li id="addFriend"> <%= link_to "add friend!", :controller=>'requests', :action=>'new', :id => @user.id %> </li>
+<%elsif !@user.friends.find_by_friend_id(session[:remember_token]).nil? %>
+  <li id="unFriend"> <%= link_to "unfriend!", :controller=>'friends', :action=>'remove', :id => @user.id %> </li><br/> <br/> | <%= @user.email%> | 
+<%else%>  
+<li id="cancel"> <%= link_to "Pending...", :controller=>'requests', :action=>'cancel', :id => @user.id %> <span id="subtle"> click to cancel request. </span> </li>        
+<%end%>
+<br/>
+<span id="subtle"> User ID: <%=@user.id%></span><br/>
+        
+  <span id="joinTime"> A member since: <%=@user.created_at.strftime("%B %d, %Y")%> </span> <br/>
+     <br/>
+ </div>
+ 
+ <div id="userStatContainer2">
+ <ul id="userStats">   
+  <li>
+  <span id="userStatsContent"> <%= @user.dreams.size %></span> 
+  <span id="subtle"> Dreams </span> 
+  </li>
+  
+  <li>
+  <div id="divider"> </div> <%= @user.friends.size %>
+  <span id="subtle"> Friends </span> 
+  </li> 
+  
+   <li>
+  <div id="divider"> </div>
+  <%= @user.comments.size %>
+  <span id="subtle"> Comments </span> 
+  
+  </li> 
+  
+ </ul>
+ </div>
+ 
+</div>
+
+
+
+
+<div id="userposts2">
+<br/>
+ 
+ <span id="title"> Recent posts by <%= @user.name%>: </span> <br/>
+
+<% @user.dreams.each do |dream| %>
+ <div id="divider"> </div>
+<p id="posts"> <%= dream.content %> </p>
+<span id="subtle"> @ <%= dream.created_at.in_time_zone('Eastern Time (US & Canada)').strftime("%I:%M %p on %B %d, %Y")  %> </span> 
+ <%if dream.privacy == false %>
+  <span id="subtle"> Liked: <span id="num"> <%= dream.rank %></span> times |
+  
+    <% if @currentUser.likes.find_by_dream_id(dream.id).nil? %>
+    <%= link_to "[like]", :controller=> :home, :action => :like, :id=>dream.id %>
+    <% elsif @likeList.include? (@currentUser.likes.find_by_dream_id(dream.id)) == false %>
+    <%= link_to "[like]", :controller=> :home, :action => :like, :id=>dream.id %>
+    <%else%>
+    <%= link_to "[unlike]", :controller=> :home, :action => :unlike, :id=>dream.id %>
+    <%end%>
+  </span> <br/>
+ 
+   <%= form_for :c, :url=>{:controller=>:comments, :action => :create, :id =>dream.id} do |f| %>
+  <%= f.text_area :content, :size => "100%" %> 
+  <%= f.submit "Submit"%> <br />
+  <% end %>
+ 
+ <% end %>
+ 
+ <% end %>
+ </div>
+<%end%>
+
+  
+</div>
+

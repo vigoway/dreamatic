@@ -1,0 +1,16 @@
+
+<% if @requests.length == 0%>
+
+<span id="notice"> You don't have any notifications right now, <span id="notification2"> <%= link_to 'go to the user center', :controller => :users, :action => :show, :id => session[:remember_token] %></span>. </span>
+
+<%else%>
+<div id="notificationM">
+<% @requests.each do |r| %>
+
+<%= link_to User.find_by_id(r.user_id).name, :controller => 'users', :action =>'show', :id => r.user_id %> wants to be friends with you.
+ <%= link_to 'yes', :controller => :friends, :action => :add, :request => r.id %> | <%= link_to 'No', :controller => :requests, :action => :destroy, :id => r.id %> <br/> <br/>
+
+<% end %>
+  </div>
+ <%end%>
+

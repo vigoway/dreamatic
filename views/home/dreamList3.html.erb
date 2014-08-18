@@ -1,0 +1,55 @@
+<h1> Recent dream posts by users: </h1>
+<div id="divider"></div>
+<br/>
+<br/>
+<p> * You can support other users by clicking on the likes. Currently, you can't vote for yourself :) </p>
+<table>
+  <tr>
+    <th>Content</th>
+    <th>Posted by</th>
+    <th>at</th>
+	<th>Privacy</th>
+	<th>Type</th>
+    <th>Liked </th>
+	<th></th>
+	<th></th>
+  </tr>
+
+<% @dreamlist.each do |dream| %>
+ <% if (dream.privacy == false)%>
+  <tr id="dreams">
+    <td><%= dream.content %></td>
+    <td><%= dream.user.name %></td>
+    <td><%= dream.created_at %></td>
+	<td><%= "Public" %></td>
+	<td><%= dream.category %> </td>
+    <td><%= dream.rank %>times</td>	
+    <td>
+	<% if (@user.email != dream.user.email) %>
+	<div id="like">
+		<% if @user.likes.find_by_dream_id(dream.id).nil? %>
+		<%= link_to "like", :action => :like, :id => dream.id %>
+		<% elsif @likeList.include? (@user.likes.find_by_dream_id(dream.id)) == false %>
+		<%= link_to "like", :action => :like, :id => dream.id %>
+		<%else%>
+		<%= link_to "unlike", :action => :unlike, :id => dream.id %>
+		<%end%>
+	</div>
+    <% else %>
+	<span> **Your post** </span>
+	<%end%>
+	</td>
+	<td><%= link_to "comment", :controller=>:comments, :action=>:new, :id=> dream.id %></td>
+	<%end%>
+  </tr>
+  <%end%>
+  
+</table>
+<br/><br/>
+
+<div id="divider"></div>
+<br/>
+
+
+<div id=login>  <%= link_to "UCenter", :action => 'loggedin'%> </div>
+

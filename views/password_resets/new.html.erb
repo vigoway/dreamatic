@@ -1,0 +1,13 @@
+<% flash.each do |key, msg| %> 
+<%= content_tag :div, msg, :class => [key, "message"], :id => "notice" %> 
+<%= content_tag :script, :type => "text/javascript" do -%> 
+setTimeout("new Effect.Fade('notice_<%= key %>');", 15000); <% end %> <% end %> 
+
+<div id="changePass">
+<%= form_tag :controller => :password_resets, :action => :create, :method => :post do %>
+    <%= label_tag :email %>
+    <%= text_field_tag :email, params[:email] %>
+    <%= submit_tag "Reset Password" %>
+<% end %>
+</div>
+

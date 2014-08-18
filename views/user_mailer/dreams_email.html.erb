@@ -1,0 +1,7 @@
+<h3> <%=@name%> commented on your dream post: </h3>
+<strong> <%= @dream.content %> </strong>
+<p id="intro"> <%=@name%> said: <%= @comment %>  </p> <br/> 
+
+Click <a href="<%= dream_url(@dream.id) %>"> here </a> to view or reply. <br/>
+
+<p id ="intro"> Thank you for being a member of dreamatic.org, an awesome place to share and realize dreams. :D </p>

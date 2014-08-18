@@ -1,0 +1,17 @@
+<div id="centercomment">
+You are commenting on: <%= @dream.content %> <br/> by <%= @dream.user.name%> <br/>
+<%= form_for :comment, :action => :create do |f| %>
+<%= f.label :comment %><br/>
+<%= f.text_area :content, :size => "55x10" %> <br /><br />
+<%= f.submit "Submit" %> <br />
+</div>
+<% end %>
+
+<div id="error">
+<% flash.each do |key, msg| %>
+    <%= content_tag :div, msg, :id => "notice_ #{key}" %>
+    <%= content_tag :script, :type => "text/javascript" do -%>
+        setTimeout("new Effect.Fade('notice_<%= key %>');", 15000);
+    <% end %>
+<% end %>
+</div>

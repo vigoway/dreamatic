@@ -1,0 +1,23 @@
+<%if User.find_by_id(session[:remember_token]) != nil %>
+<%= form_for @info, :url => {:controller => :info, :action => :create } do |f| %>
+<div id="centercomment">
+<%= f.label :comment %><br/>
+<%= f.text_area :comment, :size => "55x10" %> <br /><br />
+<div id="captcha">
+<%= render '/share/recaptcha' %>
+</div>
+<%= f.submit "Submit" %> <br/> <br/> <br/>
+
+<% flash.each do |key, msg| %>
+    <%= content_tag :div, msg, :id => "warning" %>
+    <%= content_tag :script, :type => "text/javascript" do -%>
+        setTimeout("new Effect.Fade('notice_<%= key %>');", 15000);
+    <% end %>
+<% end %>
+</div>
+<% end %>
+<%else%>
+Please <%= link_to "log in", :url => 'http://www.dreamatic.org//signin' %> first!
+<%end%>
+
+

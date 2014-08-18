@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dreamatic</title>
+
+
+  <%= csrf_meta_tags %>
+  <%= stylesheet_link_tag '/stylesheets/dreamatic', :media => :screen %>
+  <%= javascript_include_tag '/javascripts/jquery', '/javascripts/jquery.cycle.all.js', '/javascripts/myscript'%>
+  <%= javascript_include_tag '/javascripts/rails' %>
+  <link rel="shortcut icon" href="/favicon.ico" />
+  
+
+  
+</head>
+<body>        
+<div id="nav">
+<ul>
+<li>  <span id ="nav1"><%= link_to'Dream@t!c', :controller => 'home', :action =>'ref_logo'%> </span></li>
+</ul>
+</div>
+
+
+<div id="wrap">
+
+  <div id="main">
+  
+
+
+      
+<%= yield %>
+  </div>
+
+</div>
+
+
+<div id="footer">
+<p>Dream@t!c by VIGO WEI <a href="http://www.dreamatic.org/contact"> <img src="../images/mail.png" width="22px", height="20px" /> </a> </p> 
+<h4 id = "original"> To learn more about the concept of the site, click <a href="http://www.dreamatic.org/intro"> here </a>. </h4>
+
+</div>
+
+</body>
+</html>
+
+
+
+
+
