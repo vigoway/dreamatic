@@ -8,6 +8,7 @@ You are commenting on: <span id="dreamcontent"><%= @dream.content %> </span> <br
 </div>
 <% end %>
 
+<!-- display error msg if something goes wrong -->
 <div id="error">
 <% flash.each do |key, msg| %>
     <%= content_tag :div, msg, :id => "notice_ #{key}" %>
