@@ -1,7 +1,1219 @@
-/*
- * This is a manifest file that'll automatically include all the stylesheets available in this directory
- * and any sub-directories. You're free to add application-wide styles to this file and they'll appear at
- * the top of the compiled file, but it's generally better to create a new file per style scope.
- *= require_self
- *= require_tree . 
-*/
+span#inline{float:left;margin-bottom:20px;}
+#viewbtn a{ margin-left: 20px; text-decoration: none; font-size: 10px; color:white; border:1px solid green; padding:5px; background-color:yellowgreen;}
+#viewbtn a:hover {background-color: white; color:yellowgreen;}
+div#viewbtn {width: 50px;}
+
+#notification {
+  margin: 20px;
+  display: inline;
+  color:white; 
+  background-color:red; 
+  height:30px;
+  width: 30px;
+  -moz-box-shadow: 0 0 2px #888;
+  -webkit-box-shadow: 0 0 2px #888;
+  box-shadow: 0 0 2px #888;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+}
+
+#notification a {text-decoration: none; color: white; font-weight: normal; fond-size: 12px; padding-top: 2px; padding-left: 2px;} 
+   
+#notification2 {margin: 20px; background-color:lavender;
+    -moz-box-shadow: 0 0 5px #888;
+  -webkit-box-shadow: 0 0 5px #888;
+  box-shadow: 0 0 5px #888;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+}
+
+#notificationM {border:2px solid yellowgreen; width:60%; margin-left:auto; margin-right: auto; clear:both; margin-top: 5%; padding: 20px;}
+
+#notificationM a{text-decoration: none; font-size: 14px; color:white; border:1px solid gold; padding:5px; background-color:gold;}
+#notificationM a:hover { background-color: white; color:gold;}
+
+#notification2 a {text-decoration: none; color: navy; font-weight: bold; fond-size: 12px; padding-top: 5px; padding-left: 5px;}
+
+#timerarrow
+{
+  margin-left:200px;
+}
+#dreamspecs
+{text-decoration: none; font-size:14px; text-vertical-align:bottom; color:gray;}
+  
+
+#thread
+{
+  display:inline;
+}
+
+/*forgotten password?*/
+#subtle {text-decoration: none; font-size:12px; text-vertical-align:top; color:gray;}
+#subtle a{text-decoration: none; font-size:12px; text-vertical-align:top; color:gray;}
+#subtle :hover {color:#6699FF;}
+
+/*policies*/
+#policies a{text-decoration:underline; text-vertical-align:top; color:red;}
+#policies a :hover {color:#6699FF;}
+
+/* home page stuff*/
+#hometitler{
+margin:0px;
+padding: 0px;
+  padding-bottom: 100px;
+background-color: #6699FF; #0099CC;
+background-image: url(../images/bg_green.png);
+}
+
+#homepage{
+  margin-left:auto;
+  margin-right:auto;
+  padding-left:0px;
+  width: 80%;
+  clear: both;
+}
+/*signup form*/
+#joinform
+{   
+   background-color: white;
+
+   margin: 2% 0 1% 5%;
+   padding: 1%;
+   color: #000;
+     width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  clear: both;
+  padding: 40px;
+  -moz-box-shadow: 0 0 1px #888;
+  -webkit-box-shadow: 0 0 1px #888;
+  box-shadow: 0 0 1px #888;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+ }
+
+#joincontainer{
+
+   margin: 1%;
+   padding: 0;
+   width: 97%;
+   display:inline;
+}
+
+#join{
+   float: right;
+   margin: 1% 1% 1% 0;
+}
+
+ #join{
+   float: left;
+   width: 66.5%;
+   margin: 1% 0 1% 1%;
+   padding: 1%;
+   color: #000;
+}
+
+
+/*change password*/
+#changePass
+{  
+  margin-top:50px;
+  padding:20px;
+  margin-left:auto;
+  margin-right:auto;
+  clear:both;
+  width:50%;
+  background-color: lavender;
+  background-image: url(../images/bg_green.png);
+  background-color:white;
+  -moz-box-shadow: 0 0 5px #888;
+  -webkit-box-shadow: 0 0 5px #888;
+  box-shadow: 0 0 5px #888;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+ }
+
+/*Dreams*/
+#dreamThread
+{  
+  margin-top:50px;
+  margin-bottom: 50px;
+  padding:20px;
+  margin-left:auto;
+  margin-right:auto;
+  clear:both;
+  width:80%;
+  background-color: lavender;
+  background-color:white;
+  -moz-box-shadow: 0 0 5px #888;
+  -webkit-box-shadow: 0 0 5px #888;
+  box-shadow: 0 0 5px #888;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+ }
+
+#dreamThread2
+{  
+  margin-top:20px;
+  margin-bottom:20px;
+  padding:20px;
+  margin-left:auto;
+  margin-right:auto;
+  clear:both;
+  width:100%;
+  background-color: lavender;
+  background-color: ghostwhite;
+  -moz-box-shadow: 0 0 2px #888;
+  -webkit-box-shadow: 0 0 2px #888;
+  box-shadow: 0 0 2px #888;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+ }
+
+/*forms in general*/
+input { border: 1px solid lightgray; 
+background-color:lavender;
+ font: 14px Arial, Verdana, sans-serif; 
+  color:#6699FF;
+}
+
+textarea{border: 1px solid lightgray; color:#6699FF;}
+  
+
+input:focus, textarea:focus{   
+  background-color:white;
+  -moz-box-shadow: 0 0 5px #6699FF;
+  -webkit-box-shadow: 0 0 5px #6699FF;
+  box-shadow: 0 0 5px #6699FF;
+}
+ 
+#jointitle{font-family: "JournalRegular", Georgia, serif; font-size:60px; color:#6699FF; margin-left:30px;}
+ 
+
+/*the text and slide at the center of homepage*/
+#homepage{
+  border-with:0 0 0 0;
+  padding: 10px;
+  background-color:transparent;
+}
+
+#homepage td { border-width:0px; background-color:transparent;}
+
+
+table#homepage{border-width:0 0 0 0; background-color:transparent; }
+
+#hometitlertxt
+{
+font-family: "GoodDogRegular", Georgia, serif;
+color: white;
+font-weight:bold; font-size: 50px;
+-moz-text-shadow: 0 1px 0 #FFFFFF;
+-webkit-text-shadow: 0 1px 0 #FFFFFF;
+text-shadow: 0 1px 0 #FFFFFF;
+padding:10px;}
+
+#homemotto {font-family: ‘Palatino Linotype’, ‘Book Antiqua’, Palatino, serif; color:white;font-weight:normal; font-size:18px;}
+
+/*text below the homepage blue thing*/
+
+#introbox
+{
+margin-left: auto;
+margin-right: auto;
+padding: 10px;
+clear: both;
+background-color:white;
+-moz-box-shadow: 0 0 5px #888;
+-webkit-box-shadow: 0 0 5px #888;
+box-shadow: 0 0 5px #888;
+-webkit-border-radius: 0 0 10px 10px;
+-moz-border-radius: 0 0 10px 10px;
+  border-radius: 0 0 10px 10px;
+}
+
+#introhome {font-family: "JournalRegular", Georgia, serif; font-size:60px; color:white; text-align:center;}
+#introhome1 {font-family: "JournalRegular", Georgia, serif; font-size:60px; color:gray; font-weight: normal;text-align:center;}
+#introhomesub {font-family: ‘Palatino Linotype’, ‘Book Antiqua’, Palatino, serif; color:silver; font-weight:normal; font-size:18px; vertical-align:top; text-align:center;}
+#introhome {margin-bottom: 0;}
+#introhomesub {margin-top: 0;}
+#introhomesub2 {font-family: "JournalRegular", Georgia, serif; color:gray; font-size:25px; font-weight:normal; text-align:center;}
+
+#introhome, #introhomesub
+{
+margin-right:auto;
+margin-left:auto;
+width: 30%;
+clear:both;
+}
+
+#titler
+{
+  background-color: #6699FF;
+  background-image: url('../images/bg_green.png');
+  width: 100%;
+  height: 200px;
+  margin-top: -30px;
+  padding: 0;
+  position: relative;
+}
+
+#centerOpaque
+{
+  background-color: rgba( 195, 195, 195, 0.4);
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  clear: both;
+  margin-top: -100px;
+  padding-top: 100px;
+  padding-left: 20px;
+  padding-bottom: 100px;
+}
+
+#textContainer
+{
+  background-color: white;
+  width: 90%;
+  margin-left:auto;
+  margin-right: auto;
+  clear: both;
+  padding: 20px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;    
+
+}
+  
+
+#hometitler
+{
+  background-color: #6699FF;
+  background-image: url('../images/bg_green.png');
+  width: 100%;
+  height: 500px;
+  margin-top: -30px;
+  padding: 0;
+  position: relative;
+}
+
+#titlertxt
+{
+  color:white;
+  text-shadow:white 0px 1px 0, #000 0 -1px 0;
+  font-weight:bold;
+  font-size:30px;
+  color:#92B5F2;
+  font-family: Copperplate / Copperplate Gothic Light, sans-serif;
+  font-weight:bold;
+}
+
+/* fonts */
+
+@font-face {
+    font-family: 'GoodDogRegular';
+    src: url('../fonts/gooddog-webfont.eot');
+    src: url('../fonts/gooddog-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/gooddog-webfont.woff') format('woff'),
+         url('../fonts/gooddog-webfont.ttf') format('truetype'),
+         url('../fonts/gooddog-webfont.svg#GoodDogRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'JournalRegular';
+    src: url('../fonts/journal-webfont.eot');
+    src: url('../fonts/journal-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/journal-webfont.woff') format('woff'),
+         url('../fonts/journal-webfont.ttf') format('truetype'),
+         url('../fonts/journal-webfont.svg#JournalRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+#title
+{
+  font-family: "JournalRegular", Georgia, serif;
+  font-size: 38px;
+  color: red;
+}
+  
+
+#welcome
+{    
+     font-family: "JournalRegular", Georgia, serif; 
+     font-size: 40px;
+     padding-left: 10px; 
+     margin: 0px;
+}
+
+#motto{font-family: "JournalRegular", Georgia, serif;
+font-size: 30px;}
+
+#navy
+{color: navy;}
+
+/* for grid */
+#cache
+{
+    width: 40px;
+    height: 40px;
+    float:left;
+    margin-right: 20px;
+}
+#cache2{
+    width: 40px;
+    height: 40px;
+    display: inline;
+}
+
+
+span.dropt{
+    position:relative; /*this is the key*/
+    z-index:24;
+    color:#000;
+    text-decoration:none}
+
+span.dropt:hover{z-index:25;}
+
+span.dropt span{display: none}
+
+span.dropt:hover span{ /*the span will display just on :hover state*/
+    display:block;
+    position:absolute;
+    top:2em; left:2em; width:40px;
+    border:1px solid #0cf;
+    background-color:#0cf; color:#000;
+    text-align: center;}
+
+
+#num
+{
+  color: red;  
+}
+#dreamList
+{
+  margin-left:5%;
+  margin-right: 5%;
+  width: 87%;
+}
+#dreamcontent
+{  color: purple;
+  font: 18px;
+}
+#dreamcontent2
+{  color: #3366FF;
+  font: 14px;
+  float: right;
+}
+#dreamcontent1
+{  
+  padding-left: 10px;
+  padding-top: 10px;
+}
+#commentcontent
+{
+  color:#3366FF;
+  font-size: 14px;
+  text-align: center;
+}
+
+#profilepic{
+margin-left: 2%;
+  -moz-box-shadow: 0 0 5px #888;
+  -webkit-box-shadow: 0 0 5px #888;  
+  box-shadow: 0 0 5px #888;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  border-radius: 20px;
+}
+
+#brand{
+width: 90%;
+text-align: center;
+margin: auto;
+}
+
+.field_with_errors{
+display:inline;
+}
+#warning{
+color:red;
+}
+
+
+#centercomment{
+margin: 0 auto;
+width: 50%;
+clear: both;
+}
+
+div#slideshow{
+  float:left;
+  width: 440px;
+  height: 270px;
+  overflow: scroll;
+  margin: 0 auto;
+  padding-top: 0;
+  position: relative;
+
+}
+
+#slidelink
+{
+  margin-top: -20px;
+  font-size: 14px;
+  position:absolute;
+  left: 100px;
+  top: 254px;
+}
+#slidelink a {text-decoration: none; color:navy; font-size: 16px;}
+#slidelink a:hover {text-decoration:underline; color:purple;}
+
+#word{
+  float:right;
+  margin-right:30px;
+  clear:both;
+}
+
+div#slideshow ul#slides li{
+  list-style: none;
+}
+
+
+
+#slideimg{
+      margin-top: -15px;
+      margin-left: 20px;
+    -moz-box-shadow: 0 0 5px #888;
+  -webkit-box-shadow: 0 0 5px #888;  
+  box-shadow: 0 0 5px #888;
+    }
+
+img#slides
+{
+  margin-left: -20px;
+
+}
+ul#slides{position:absolute; left:-20px; margin-right:40px; padding-left: -20px; width: 440px;}
+
+
+    
+#error_explanation{
+color:red;
+}
+#minilogincontainer{
+display:inline;
+position: absolute;
+padding: 0 0 0 0;
+  margin-top: -8px;
+top:0px;
+right:0px;
+}
+
+#miniloginbox{
+display:inline;
+font: 6px;
+float: left;
+margin-right: 80px;
+padding-bottom: 20px;
+}
+
+
+#minilogin{
+display:inline;
+font: 6px;
+clear: both;
+padding-top: 0px;
+margin-left: 20px;
+position: relative;
+top: 4px;
+}
+
+#minilogin :hover{}
+
+#uposts{
+margin:0px;
+padding:0px;
+border: 1px dashed;
+border-width: 0 1px 1px 1px;
+}
+
+#policy{
+margin:2px;
+padding-left:25px;
+border-width: 1px 0 0 0;
+border-style: dashed;
+color: #92B5F2;
+}
+#comment
+{
+color: navy;
+}
+
+
+
+#captcha{
+  width: 50%;
+}
+
+#error{
+margin: 0, auto;
+color:red;
+background-color: silver;
+}
+
+
+#notice{
+width:60%;
+margin-top:15px;
+margin-left:auto;
+margin-right:auto;
+clear:both;
+height: 30px;
+padding:5px;
+font-size:20px;
+color:black;
+border:1px solid green;
+background-color:#C7FFAB;
+}
+
+#warning{
+width:60%;
+margin-top:15px;
+height: 30px;
+padding:5px;
+font-size:20px;
+color:black;
+border:1px solid red;
+background-color:#FFE6A6;
+}
+
+#joinclear{
+   height: 0;
+   font-size: 1px;
+   margin: 0;
+   padding: 0;
+   line-height: 0;
+   clear: both;
+
+}
+
+#logobrand{
+margin-left:auto;
+margin-right: auto;
+width:287px;
+}
+
+/*body*/
+body{
+margin: 0px 0px 0px 0px;
+padding: 0px 0px 0px 0px;
+background-color:white;
+}
+body{
+    padding:0px 0px 0px 0px;
+    border:0px;
+}
+
+
+#nav{
+    background: #92B5F2; /* for non-css3 browsers */
+
+filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#92B5F2', endColorstr='#6699FF'); /* for IE */
+background: -webkit-gradient(linear, left top, left bottom, from(#92B5F2), to(#6699FF)); /* for webkit browsers */
+background: -moz-linear-gradient(top,  #92B5F2,  #6699FF); /* for firefox 3.6+ */
+    
+    padding: 5px 0px 5px 0px;
+    margin-bottom:2px gray;
+    border-bottom: 0px solid #ccc;
+}
+
+#nav1{
+  color: #222;
+  text-shadow:white 0px 1px 0, #000 0 -1px 0;
+  font-weight:bold;
+  color:#92B5F2;
+}
+
+#nav2{
+  font-family: Copperplate / Copperplate Gothic Light, sans-serif;
+  font-weight:bold;
+  color:yellowgreen;
+}
+
+/*for buttons: login controls both "login" and "signout", button controls other.   */
+#login{
+font: 18px bold;
+float:right;
+background: yellowgreen; /* for non-css3 browsers */
+  -moz-box-shadow: 0 0 5px #888;
+  -webkit-box-shadow: 0 0 5px #888;  
+  box-shadow: 0 0 5px #888;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+padding-top:0px;
+margin:0px;
+height:24px;
+width: 7%;
+text-align:center;
+border-left: 2px solid #E6E6E6;
+border-bottom: 2px solid #ccc;
+position:absolute;
+top:10px;
+right:20px;
+}
+
+#login a{
+    color:yellow;
+    hover:black;
+    padding: 2px;
+    text-decoration: none;
+    color:white;
+    font: 20px;
+}
+
+#login:hover{
+  background-color:#669900;}
+
+#button{
+font: 18px bold;
+background: yellowgreen; /* for non-css3 browsers */
+  -moz-box-shadow: 0 0 5px #888;
+  -webkit-box-shadow: 0 0 5px #888;  
+  box-shadow: 0 0 5px #888;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+padding:5px;
+margin:0px;
+height:24px;
+width: 10%;
+text-align:center;
+border-left: 2px solid #E6E6E6;
+border-bottom: 2px solid #ccc;
+}
+
+#button a{
+  text-decoration: none;
+  color: white;
+}
+#button:hover {background-color:#669900;}
+
+
+  
+
+/* signup elements floated to the right */
+#free{
+    float:right;
+  margin-right: 10%;
+    clear:both;
+}
+
+img#signup{
+    float: left;
+    margin-left:20px;
+}
+
+#signup {
+    background-color:#585858;  
+    -moz-box-shadow: 0 0 5px #888;
+  -webkit-box-shadow: 0 0 5px #888;  
+  box-shadow: 0 0 5px #888;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  height:60px;
+  width:280px;
+  font-family: ‘Lucida Sans Unicode’, ‘Lucida Grande’, sans-serif;
+  position: relative;
+  transition: all .5s;
+  -moz-transition: all .5s; /* Firefox 4 */
+  -webkit-transition: all .5s; /* Safari and Chrome */
+  -o-transition: all .5s; /* Opera */
+}
+#signup a {text-decoration:none; color:white; font-weight:bold; font-size:20px; 
+text-align:center;
+position:absolute;
+  top:20px;
+  left:10px;
+}
+#signup:hover{ 
+    background-color: #686868;
+  background-image: url(../images/bg_green.png);
+  -moz-box-shadow: 0 0 10px #888;
+  -webkit-box-shadow: 0 0 10px #888;  
+  box-shadow: 0 0 10px #888;
+  -moz-text-shadow: 0px 0px 2px white;
+  -webkit-text-shadow: 0px 0px 2px white;  
+  text-shadow: 0px 0px 2px white; }
+  
+
+#signupcontainer{
+   color::#92B5F2;
+   float: right;
+   margin: 1% 0 1% 1%;
+   padding: 1%;
+   background-repeat: no-repeat;
+   color: #000;
+   margin: 1% 1% 1% 0;
+   z-index: 10;
+   width: 40%;
+   border-width: 0 0 0 1px;
+   border-color: #6699FF;
+   border-style: dotted;
+
+}
+
+#centeredsignup{
+margin-right:10%;
+float:right;
+}
+
+#loginbox{
+margin-left: auto;
+margin-right: auto;
+width:30%;
+}
+
+/* picture on the home page */
+#homepic
+{
+  padding: 0 0 0 0;
+  margin-right: auto;
+  margin-left: auto;
+  width:60%;
+  -moz-box-shadow: 0 0 5px #888;
+  -webkit-box-shadow: 0 0 5px #888;  
+  box-shadow: 0 0 5px #888;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+   display:inline;  
+}
+
+#homepiccontainer
+{
+   color::#92B5F2;
+   float: left;
+   width: 50%;
+   margin: 1% 0 1% 1%;
+   padding: 1%;
+   color: #000;
+   z-index:-1;
+   overflow: hidden;
+}
+
+#homeclear {
+   height: 0;
+   font-size: 1px;
+   margin: 0;
+   padding: 0;
+   line-height: 0;
+   clear: both;
+}
+
+
+h2{color:yellowgreen;}
+h4,h3{font-weight: normal;}
+#original{color: navy; text-align:center;}
+#original a{text-decoration: none;}
+#original a:hover{
+color:navy;
+text-decoration:underline;
+}
+/* nav is the top bar on each page */
+
+#nav a{
+    color:yellow;
+    hover:black;
+    padding: 2px;
+    text-decoration: none;
+    color: #3366FF;
+    font: 20px;
+}
+
+#nav ul,li{
+    display:inline;
+    margin:0px;
+    border:0px;
+    font: 28px bold;
+}
+
+img#nav{
+    display:inline;
+}
+
+h1{
+    color: #92B5F2;
+    padding:10px 0px 0px 0px;
+    margin:0px;
+}
+
+/* a dashed line to divide elements, adds a modern feeling to the site */
+#divider{
+margin-top: 20px;
+border-bottom: 1px dashed #CBD6EB;
+clear:both;
+}
+ 
+/* for the motto of the site */
+#motto
+{
+ color:navy;
+ margin-left:5%;
+ padding-bottom: 40px;
+}
+
+#mottolink {font-family: Arial,Helvetica,sans-serif;}
+
+#mottolink a:link{
+color:#6699cc;
+font-size: 12px;
+vertical-align: super;
+text-decoration:none;
+}
+#mottolink a:hover{
+color:yellowgreen;
+text-decoration:none;
+}
+#motto a:link{
+text-decoration:none;
+}
+#motto a:hover{
+color:yellowgreen;
+text-decoration:none;
+}
+
+/* tables */
+
+
+#functions{
+  border-with:0 0 0 0;
+  padding: 10px;
+  background-color:transparent;
+}
+
+#functions td { border-width:0px;}
+
+
+#miniloginbtn td {vertical-align:top;}
+
+tr, td{
+    font:20px;
+    text-align:left;
+    padding: 5px;
+    margin:0px;
+    border:dashed #94B5F6;
+    border-width:  0 0 1px 1px;
+}
+
+th{
+background-color:yellowgreen;
+}
+
+/* copied from depot, might not be used */
+img#products {
+
+    margin:5px;
+    border: 1px solid #f0f0f0;
+    border-bottom: 3px solid #ccc;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+}
+
+/* container, used on the loggedin page */
+div #container{
+ -moz-box-shadow: 0 0 10px #A2BFF4;
+ -webkit-box-shadow: 0 0 10px #A2BFF4;
+ box-shadow: 0 0 10px #A2BFF4;
+ background-color: white;
+ padding-bottom: 0px;
+ margin-bottom: 0px;
+ border-bottom: 0px;
+ display:inline;
+ color:#A2BFF4;
+}
+
+
+
+#footer{
+    text-align:center;
+    background-color: #6699FF; #0099CC;
+  background-image: url(../images/bg_green.png);
+    padding:5px;
+}
+
+/* makes the footer stick to the bottom of the page */
+
+html, body {height: 100%;}
+
+#wrap {min-height: 100%;}
+
+#main {overflow:auto;
+  padding-bottom: 150px;
+margin-left: auto;
+margin-right: auto;
+clear: both;
+}  /* must be same height as the footer */
+
+#footer {position: relative;
+  margin-top: -150px; /* negative value of footer height */
+  height: 150px;
+  clear:both;}
+
+
+
+
+/* sign up suggestion */
+#suggest{
+
+border: #A2BFF4 dashed 1px;
+width: 60%;
+padding:10px;
+font: bold 30px;
+color:  #A2BFF4;
+margin-left: auto;   
+margin-right: auto;
+}
+
+
+/* styling user center*/
+
+
+
+#userinfo{
+    
+padding-left:10px;
+margin-left: 10px;
+font: Courier New bold 18px;
+width:30%;
+padding-top: 0px;
+margin-right:30px;
+}
+
+#userProfile
+{
+  background-color:lavender;
+  -moz-box-shadow: 0 0 2px #888;
+  -webkit-box-shadow: 0 0 2px #888;
+  box-shadow: 0 0 2px #888;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  margin-bottom:20px;
+  padding-left:10px;
+  margin-top: -28px;
+}
+
+
+#recentPosts{
+    margin-bottom:20px;
+  background-color: ghostwhite;
+  -moz-box-shadow: 0 0 2px #888;
+  -webkit-box-shadow: 0 0 2px #888;
+  box-shadow: 0 0 2px #888;
+   -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+padding:10px;}
+
+
+#miniProfile
+{
+width: 100%;
+}
+
+#userPic{
+margin: 20px;
+width:25%;
+display:inline;
+float:left;
+-webkit-border-radius: 4px;
+-moz-border-radius: 4px;
+  border-radius: 4px;
+}
+  
+
+#userSummary{
+  width:100%;
+  float:left;
+  display:inline;
+}
+
+
+
+#joinTime {text-decoration: none; font-size:12px; text-vertical-align:top; color:green;}
+
+#userChgPass {text-decoration: none; font-size:12px; text-vertical-align:top; color:navy;}
+#userChgPass a{text-decoration: none; font-size:12px; font-weight: bold; text-vertical-align:top; color:navy;}
+#userChgPass :hover {color:#6699FF;}
+
+span#time{font-size:12px; color:gray;}
+
+#userposts{
+  width:48%;
+  height: 100%;
+  position: absolute;
+  top: 50px;
+  right: 14%;
+}
+
+#makeup
+{
+  height:400px;
+}
+#posts
+{
+font: Courier New bold 18px;
+color:#0066FF;
+}
+
+
+#friends
+{
+  background-color:azure;
+  font: Courier New bold 18px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+   -moz-box-shadow: 0 0 2px #888;
+  -webkit-box-shadow: 0 0 2px #888;
+  box-shadow: 0 0 2px #888;
+  padding-bottom: 120px;
+  padding-left: 10px;
+}
+
+#fmatrix
+{
+  margin-right:5px;
+  width: 45px;
+  float:left;
+}
+
+#fPic{
+width:38px;
+height: 38px;
+margin-left:auto;
+margin-right:auto;
+  clear:both;
+  margin-top: 10px;
+-webkit-border-radius: 4px;
+-moz-border-radius: 4px;
+  border-radius: 4px;
+}
+  
+#titleNew
+{
+  font-family: "JournalRegular", Georgia, serif;
+  font-size: 38px;
+  color: red;
+}
+
+/*for user browsed by others*/
+
+#userinfo2{   
+  
+  margin-top:0px;
+  padding:10px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 90%;
+  height: 200px;
+  background-color: white;
+  font: Courier New bold 18px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+}
+
+#userPic2{
+margin: 20px;
+  margin-top: 20px;
+height:128px;
+width: 128px;
+float:left;
+-webkit-border-radius: 4px;
+-moz-border-radius: 4px;
+ border-radius: 4px;
+  float: left;
+}  
+
+#userSummary2{
+  width:40%;
+   margin-top: 20px;
+  float:left;
+  display:inline;
+}
+
+
+
+#userStatContainer2
+{
+  float:right;
+  width: 30%;
+  margin-top: -20px;
+}
+
+#userposts2
+{
+  background-color:silver;
+  margin-left:auto;
+  margin-right:auto;
+  width: 85%;
+  padding: 20px;
+  margin-top: 20px;
+  margin-bottom: 100px;
+    -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+}
+
+#addFriend a{text-decoration: none; font-size: 14px; color:white; border:1px solid green; padding:5px; background-color:yellowgreen;} 
+#addFriend a:hover {background-color: white; color:yellowgreen;}
+
+#unFriend a{text-decoration: none; font-size: 14px; color:white; border:1px solid orange; padding:5px; background-color:tomato;} 
+#unFriend a:hover {background-color: white; color:tomato;}
+
+#cancel a{text-decoration: none; font-size: 14px; color:white; border:1px solid gold; padding:5px; background-color:gold;} 
+#cancel a:hover { background-color: white; color:gold;}
+
+
+
+#userphoto{
+padding:10px;
+margin:10px;
+width:220px;
+height:250px;
+font: Courier New bold 28px;
+color:#A2BFF4;
+-moz-box-shadow: 0 0 10px #A2BFF4;
+-webkit-box-shadow: 0 0 10px #A2BFF4;
+box-shadow: 0 0 10px #A2BFF4;}
+
+#intro{
+  color:#6699FF;
+  margin-left: 2%;
+  font-size: 20px;
+}
+#intro a{ color:#6699cc;
+font-weight: normal;}
+#intro a:link{
+color:#6699cc;
+text-decoration:none;
+}
+#intro a:hover{
+color:red;
+text-decoration:underline;
+}
+
+#heart{color: #3366FF;
+}
+
+#admin{color:red;}
+
+
+  
