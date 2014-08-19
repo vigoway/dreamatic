@@ -14,4 +14,21 @@ running (hosted on dreamhost.com) <br/>
 ####Project MVC info:
 Models: User, Dream, Comment, Friend, Request, Like <br/>
 
+| User  | Dream | Comment | Like  |
+| --- | --- | --- | --- |
+| id (PK) | id(PK)  | id(PK)  | id(PK)  |
+| email | user_id (FK)  | user_id(FK) | liker_id  |
+| password  | content | dream_id (FK) | dream_id  |
+| name  | . | content |   |
+| pic |   |   |   |
+
+
+
+
+A user has many non-user objects
+A dream belongs to a user & can have many comments and likes
+A comment belongs to a user
+Friend and Request are association tables. 
+Friend 
+
 *db files, gem files and other misc files are not uploaded to github. 
