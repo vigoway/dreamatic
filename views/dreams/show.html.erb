@@ -1,6 +1,8 @@
-  <%= javascript_include_tag 'http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js' %>
-  <%= javascript_include_tag '/javascripts/jquery.countdown.js' %>
-  <%= stylesheet_link_tag '../stylesheets/jquery.countdown.css', :media => :screen  %>
+  
+
+<%= javascript_include_tag 'http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js' %>
+<%= javascript_include_tag '/javascripts/jquery.countdown.js' %>
+<%= stylesheet_link_tag '../stylesheets/jquery.countdown.css', :media => :screen  %>
   
 <%if User.find_by_id(session[:remember_token]) != nil %>
 <style type="text/css">
@@ -10,6 +12,7 @@
 </style>
 
 <% if @dream.state != nil %>
+<!-- display countdown timer -->  
 <script type="text/javascript">
 $(function () {
   var austDay = new Date();
@@ -20,42 +23,55 @@ $(function () {
 </script>
 
 <div id="defaultCountdown"></div> <br/>
-  <span id="subtle">        <span id="timerarrow">   <img src="../images/arrow.png"/> </span> Time left for this dream to come true! </span>
-  <%end%>
+
+<span id="subtle"> 
+<span id="timerarrow"> <img src="../images/arrow.png"/> </span> 
+Time left for this dream to come true! 
+</span>
+<%end%>
+
+<!-- end of countdown timer section, start displaying the dream content -->
 
 <div id="dreamThread">
-<%session[:dream] = @dream.id%>
-<span id="dreamcontent"> <%= @dream.content %> <span> <br/><br/><br/>
-<%if @dream.resources != nil && @dream.resources.length >= 1 %>
-<span id="dreamspecs"> The dreamer needs <span id="num"> <%=@dream.resources.to_s%></span> to realize this dream. </span> 
-<%end%> 
-<%if @dream.state != nil%>
-<span id="dreamspecs"> 
-  
-  <span id="num"> <% tics = (86400* @dream.state - (Time.now - @dream.created_at)).to_i %> <%if tics <= 0 %>  This dream perished @ <%= @time.in_time_zone('Eastern Time (US & Canada)').strftime("%I:%M %p on %B %d, %Y") %>  <%else%> <%= tics%> </span> tics (aka. seconds) left to achieve this goal. <%end%>  <span id="dreamspecs">
-<%end%>
-<br/>
-<span id="dreamcontent2"> --<%= @dream.category %> -- by <% s = @dream.user.name%> 
-<%= link_to s, :controller => :users, :action =>:show, :id => @dream.user.id %> 
-<img id="cache2" src = <%=@dream.user.pics.first.url %> />-- <%= @dream.created_at.in_time_zone('Eastern Time (US & Canada)').strftime("%I:%M %p on %B %d, %Y") %> --
-  Liked: <span id="num"> <%= @dream.rank %></span> times </span> 
-  
-  <br/><br/><br/>
- <span id="subtle"> <% if (@user.email != @dream.user.email) %>
-    <% if @user.likes.find_by_dream_id(@dream.id).nil? %>
-    <%= link_to "[like]", :controller=> :home, :action => :like, :id=>@dream.id %>
-    <% elsif @likeList.include? (@user.likes.find_by_dream_id(@dream.id)) == false %>
-    <%= link_to "[like]", :controller=> :home, :action => :like, :id=>@dream.id %>
-    <%else%>
-    <%= link_to "[unlike]", :controller=> :home, :action => :unlike, :id=>@dream.id %>
-    <%end%>
-  </span>
-  
-  <% else %>
- **Your post** </span>
+  <%session[:dream] = @dream.id%>
+  <span id="dreamcontent"> <%= @dream.content %> <span> <br/><br/><br/>
+  <%if @dream.resources != nil && @dream.resources.length >= 1 %>
+    <span id="dreamspecs"> The dreamer needs <span id="num"> <%=@dream.resources.to_s%></span> to realize this dream. </span> 
+  <%end%> 
+  <!-- display time left until the deadline -->
+  <%if @dream.state != nil%>
+    <span id="dreamspecs"> 
+    <span id="num"> <% tics = (86400* @dream.state - (Time.now - @dream.created_at)).to_i %> <%if tics <= 0 %>  This dream perished @ <%= @time.in_time_zone('Eastern Time (US & Canada)').strftime("%I:%M %p on %B %d, %Y") %>  <%else%> <%= tics%> </span> tics (aka. seconds) left to achieve this goal. <%end%>  <span id="dreamspecs">
   <%end%>
+<br/>
 
-    <span id="subtle">| <%= link_to "[What's Hot]", :controller => :home, :action => :dreamList %> </span>   <span id="subtle">| <%= link_to "[Ucenter]", :controller => :home, :action => :loggedin %> </span>
+<!-- start displaying other information about the dream: category, author, pic, time_created, number of likes etc. -->
+<span id="dreamcontent2"> 
+  -- <%= @dream.category %> 
+  -- by <% s = @dream.user.name%> <%= link_to s, :controller => :users, :action =>:show, :id => @dream.user.id %> 
+  <img id="cache2" src = <%=@dream.user.pics.first.url %> />
+  -- <%= @dream.created_at.in_time_zone('Eastern Time (US & Canada)').strftime("%I:%M %p on %B %d, %Y") %> 
+  -- Liked: <span id="num"> <%= @dream.rank %></span> times 
+</span> 
+<br/><br/><br/>
+
+<!-- display the like/unlike button if not the user's own dream -->
+<span id="subtle"> 
+  <% if (@user.email != @dream.user.email) %>
+    <% if @user.likes.find_by_dream_id(@dream.id).nil? %>
+      <%= link_to "[like]", :controller=> :home, :action => :like, :id=>@dream.id %>
+    <% elsif @likeList.include? (@user.likes.find_by_dream_id(@dream.id)) == false %>
+      <%= link_to "[like]", :controller=> :home, :action => :like, :id=>@dream.id %>
+    <%else%>
+      <%= link_to "[unlike]", :controller=> :home, :action => :unlike, :id=>@dream.id %>
+    <%end%>
+  <% else %> 
+    **Your post** 
+  <%end%>
+</span>
+
+  
+<span id="subtle">| <%= link_to "[What's Hot]", :controller => :home, :action => :dreamList %> </span>   <span id="subtle">| <%= link_to "[Ucenter]", :controller => :home, :action => :loggedin %> </span>
   
   
   <% @dream.comments.each do |comment| %>
