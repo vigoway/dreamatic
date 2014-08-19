@@ -5,101 +5,98 @@
 <%= stylesheet_link_tag '../stylesheets/jquery.countdown.css', :media => :screen  %>
   
 <%if User.find_by_id(session[:remember_token]) != nil %>
-<style type="text/css">
-@import "css/jquery.countdown.css";
-
-#defaultCountdown { width: 240px; height: 45px; }
-</style>
-
-<% if @dream.state != nil %>
-<!-- display countdown timer -->  
-<script type="text/javascript">
-$(function () {
-  var austDay = new Date();
-  austDay = new Date(<%= @time.year%>, <%=@time.month%> -1, <%=@time.day%>);
-  $('#defaultCountdown').countdown({until: austDay});
-  $('#year').text(austDay.getFullYear());
-});
-</script>
-
-<div id="defaultCountdown"></div> <br/>
-
-<span id="subtle"> 
-<span id="timerarrow"> <img src="../images/arrow.png"/> </span> 
-Time left for this dream to come true! 
-</span>
-<%end%>
+  <style type="text/css">
+    @import "css/jquery.countdown.css";
+    #defaultCountdown { width: 240px; height: 45px; }
+  </style>
+  <!-- section to display the countdown timer --> 
+  <% if @dream.state != nil %>
+    <script type="text/javascript">
+    $(function () {
+      var austDay = new Date();
+      austDay = new Date(<%= @time.year%>, <%=@time.month%> -1, <%=@time.day%>);
+      $('#defaultCountdown').countdown({until: austDay});
+      $('#year').text(austDay.getFullYear());
+    });
+    </script>
+    <div id="defaultCountdown"></div> <br/>
+  
+    <span id="subtle"> 
+    <span id="timerarrow"> <img src="../images/arrow.png"/> </span> 
+    Time left for this dream to come true! 
+    </span>
+  <%end%>
 
 <!-- end of countdown timer section, start displaying the dream content -->
 
-<div id="dreamThread">
-  <%session[:dream] = @dream.id%>
-  <span id="dreamcontent"> <%= @dream.content %> <span> <br/><br/><br/>
-  <%if @dream.resources != nil && @dream.resources.length >= 1 %>
-    <span id="dreamspecs"> The dreamer needs <span id="num"> <%=@dream.resources.to_s%></span> to realize this dream. </span> 
-  <%end%> 
-  <!-- display time left until the deadline -->
-  <%if @dream.state != nil%>
-    <span id="dreamspecs"> 
-    <span id="num"> <% tics = (86400* @dream.state - (Time.now - @dream.created_at)).to_i %> <%if tics <= 0 %>  This dream perished @ <%= @time.in_time_zone('Eastern Time (US & Canada)').strftime("%I:%M %p on %B %d, %Y") %>  <%else%> <%= tics%> </span> tics (aka. seconds) left to achieve this goal. <%end%>  <span id="dreamspecs">
-  <%end%>
-<br/>
+  <div id="dreamThread">
+    <%session[:dream] = @dream.id%>
+    <span id="dreamcontent"> <%= @dream.content %> <span> <br/><br/><br/>
+    <%if @dream.resources != nil && @dream.resources.length >= 1 %>
+      <span id="dreamspecs"> The dreamer needs <span id="num"> <%=@dream.resources.to_s%></span> to realize this dream. </span> 
+    <%end%> 
+    <!-- display time left until the deadline -->
+    <%if @dream.state != nil%>
+      <span id="dreamspecs"> 
+      <span id="num"> <% tics = (86400* @dream.state - (Time.now - @dream.created_at)).to_i %> <%if tics <= 0 %>  This dream perished @ <%= @time.in_time_zone('Eastern Time (US & Canada)').strftime("%I:%M %p on %B %d, %Y") %>  <%else%> <%= tics%> </span> tics (aka. seconds) left to achieve this goal. <%end%>  <span id="dreamspecs">
+    <%end%>
+  <br/>
 
 <!-- start displaying other information about the dream: category, author, pic, time_created, number of likes etc. -->
-<span id="dreamcontent2"> 
-  -- <%= @dream.category %> 
-  -- by <% s = @dream.user.name%> <%= link_to s, :controller => :users, :action =>:show, :id => @dream.user.id %> 
-  <img id="cache2" src = <%=@dream.user.pics.first.url %> />
-  -- <%= @dream.created_at.in_time_zone('Eastern Time (US & Canada)').strftime("%I:%M %p on %B %d, %Y") %> 
-  -- Liked: <span id="num"> <%= @dream.rank %></span> times 
-</span> 
-<br/><br/><br/>
+  <span id="dreamcontent2"> 
+    -- <%= @dream.category %> 
+    -- by <% s = @dream.user.name%> <%= link_to s, :controller => :users, :action =>:show, :id => @dream.user.id %> 
+    <img id="cache2" src = <%=@dream.user.pics.first.url %> />
+    -- <%= @dream.created_at.in_time_zone('Eastern Time (US & Canada)').strftime("%I:%M %p on %B %d, %Y") %> 
+    -- Liked: <span id="num"> <%= @dream.rank %></span> times 
+  </span> 
+  <br/><br/><br/>
 
 <!-- display the like/unlike button if not the user's own dream -->
-<span id="subtle"> 
-  <% if (@user.email != @dream.user.email) %>
-    <% if @user.likes.find_by_dream_id(@dream.id).nil? %>
-      <%= link_to "[like]", :controller=> :home, :action => :like, :id=>@dream.id %>
-    <% elsif @likeList.include? (@user.likes.find_by_dream_id(@dream.id)) == false %>
-      <%= link_to "[like]", :controller=> :home, :action => :like, :id=>@dream.id %>
-    <%else%>
-      <%= link_to "[unlike]", :controller=> :home, :action => :unlike, :id=>@dream.id %>
+  <span id="subtle"> 
+    <% if (@user.email != @dream.user.email) %>
+      <% if @user.likes.find_by_dream_id(@dream.id).nil? %>
+        <%= link_to "[like]", :controller=> :home, :action => :like, :id=>@dream.id %>
+      <% elsif @likeList.include? (@user.likes.find_by_dream_id(@dream.id)) == false %>
+        <%= link_to "[like]", :controller=> :home, :action => :like, :id=>@dream.id %>
+      <%else%>
+        <%= link_to "[unlike]", :controller=> :home, :action => :unlike, :id=>@dream.id %>
+      <%end%>
+    <% else %> 
+      **Your post** 
     <%end%>
-  <% else %> 
-    **Your post** 
-  <%end%>
-</span>
+  </span>
 
+<!-- other links -->  
+  <span id="subtle">| <%= link_to "[What's Hot]", :controller => :home, :action => :dreamList %> </span>   
+  <span id="subtle">| <%= link_to "[Ucenter]", :controller => :home, :action => :loggedin %> </span>
   
-<span id="subtle">| <%= link_to "[What's Hot]", :controller => :home, :action => :dreamList %> </span>   <span id="subtle">| <%= link_to "[Ucenter]", :controller => :home, :action => :loggedin %> </span>
-  
-  
+<!-- section for comments -->    
   <% @dream.comments.each do |comment| %>
+    <div id="divider"> </div> <br/>  
+       <img id="cache" src = <%=comment.user.pics.first.url %> /> 
+       <div id="thread"> 
+       <span id="subtle">  <%= comment.user.name %> </span>
+       <span id="commentcontent"> <%= comment.content %> </span> <br/> 
+       <span id="subtle"> <%= comment.created_at.in_time_zone('Eastern Time (US & Canada)').strftime("%I:%M %p on %B %d, %Y") %> </span> 
+       </div>
+  <%end%>
+  <div id="divider"> </div> <br/>  
 
-  <div id="divider"> </div> <br/>  
-     <img id="cache" src = <%=comment.user.pics.first.url %> /> 
-     <div id="thread"> 
-     <span id="subtle">  <%= comment.user.name %> </span>
-     <span id="commentcontent"> <%= comment.content %> </span> <br/> 
-     <span id="subtle"> <%= comment.created_at.in_time_zone('Eastern Time (US & Canada)').strftime("%I:%M %p on %B %d, %Y") %> </span> 
-     </div>
-  <%end%>
-  
-  <div id="divider"> </div> <br/>  
-  
+<!-- add a quick reply box to comment on the dream -->   
+
   <%if @dream.user.friends.find_by_friend_id(session[:remember_token]).nil? && @dream.user != User.find(session[:remember_token]) %>
-<span id="notice"> Friend <%= link_to @dream.user.name.to_s, :controller => :users, :action => :show, :id => @dream.user.id %> to comment on this post. </span> <br/>
- 
+    <span id="notice"> Friend <%= link_to @dream.user.name.to_s, :controller => :users, :action => :show, :id => @dream.user.id %> to comment on this post. </span> <br/>
   <%else%>
-  <%= form_for :c, :url=>{:controller=>:comments, :action => :create, :id=>@dream.id} do |f| %>
-  <%= f.label :Enter_your_comment %><br/>
-  <%= f.text_area :content, :size => "100%" %> 
-  <%= f.submit "Submit"%> <br />
-  <% end %>
-  <%end%>
-</div>
+    <%= form_for :c, :url=>{:controller=>:comments, :action => :create, :id=>@dream.id} do |f| %>
+    <%= f.label :Enter_your_comment %><br/>
+    <%= f.text_area :content, :size => "100%" %> 
+    <%= f.submit "Submit"%> <br />
+    <% end %>
+    <%end%>
+  </div>
   
- <%else%>
- <p id="warning"> You need to <%= link_to "log in", :url => 'http://www.dreamatic.org/signin' %> first to view dreams. </p>
- <% session[:url] = request.fullpath %>
- <%end%>
+<%else%>
+  <p id="warning"> You need to <%= link_to "log in", :url => 'http://www.dreamatic.org/signin' %> first to view dreams. </p>
+  <% session[:url] = request.fullpath %>
+<%end%>
